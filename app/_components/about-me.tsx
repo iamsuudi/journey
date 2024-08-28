@@ -20,7 +20,6 @@ const skills: { [key: string]: string[] } = {
 		"TanStack",
 		"Zustand",
 		"React Native",
-		"Expo",
 	],
 	Styling: [
 		"SASS",

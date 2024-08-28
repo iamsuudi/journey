@@ -1,11 +1,8 @@
-import { Patua_One } from "next/font/google";
-
 import { cn } from "@/lib/utils";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import Link from "next/link";
-
-const font = Patua_One({ subsets: ["latin"], weight: ["400"] });
+import { patuaOneFont } from "@/lib/fonts";
 
 export default function HeroSection() {
 	return (
@@ -20,7 +17,7 @@ export default function HeroSection() {
 				<p
 					className={cn(
 						"text-5xl sm:text-6xl md:text-8xl mr-auto text-nowrap lg:text-[8rem]",
-						font.className
+						patuaOneFont.className
 					)}>
 					Full-stack
 				</p>
@@ -82,7 +79,7 @@ export default function HeroSection() {
 				<p
 					className={cn(
 						"text-5xl ml-auto sm:text-6xl md:text-8xl lg:text-[8rem]",
-						font.className
+						patuaOneFont.className
 					)}>
 					Developer
 				</p>

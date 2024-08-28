@@ -1,24 +1,21 @@
 "use client";
 
-import { Rubik_Moonrocks } from "next/font/google";
-
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 import ModeToggle from "@/components/ui/mode-toggle";
 import { cn } from "@/lib/utils";
+import { sevillanaFont } from "@/lib/fonts";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRightIcon } from "lucide-react";
-
-const font = Rubik_Moonrocks({ subsets: ["latin"], weight: ["400"] });
 
 export default function NavBar() {
 	const pathname = usePathname();
 
 	return (
-		<div className="w-full fixed top-0 backdrop-blur-sm z-10 flex justify-center">
+		<div className="w-full fixed top-0 backdrop-blur-lg z-10 flex justify-center">
 			<nav className="w-full flex items-center max-w-screen-lg mx-auto justify-between py-1 sm:p-2">
-				<p className={cn(font.className, "text-xl ml-5")}>@iamsuudi</p>
+				<p className={cn("ml-3", sevillanaFont.className)}>@iamsuudi</p>
 
 				<ul className="flex">
 					<li hidden={pathname.startsWith("/blogs")}>
