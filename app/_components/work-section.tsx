@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const works = [
 	{
 		time: "2024 May - July",
-        duration: "3 months",
+		duration: "3 months",
 		company: "HINTA",
 		technologies: ["React", "Express"],
 		role: "Fullstack developer",
@@ -13,15 +13,9 @@ const works = [
 
 export default function Worksection() {
 	return (
-		<div className="mt-40">
-			<div className="space-y-8">
-				<p
-					className={cn(
-						"text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap lg:text-[8rem]",
-						patuaOneFont.className
-					)}>
-					Work
-				</p>
+		<div className="mt-40  flex justify-center">
+			<div className="space-y-8 max-w-screen-xl w-full">
+				<p className="text-sm font-mono">.../Work...</p>
 				<div className="last:border-b-[1px]">
 					{works.map((work) => {
 						return (

@@ -71,7 +71,7 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
 export default function AboutMe() {
 	return (
 		<div className="mt-32 flex justify-center">
-			<div className="max-w-screen-lg w-full space-y-10 md:space-y-20">
+			<div className="max-w-screen-xl w-full space-y-10 md:space-y-20">
 				<div className="flex justify-between flex-wrap gap-5">
 					<span className="text-sm font-mono">.../About me...</span>
 					<p className="max-w-96 text-foreground/70 mx-auto mt-5">
@@ -83,12 +83,12 @@ export default function AboutMe() {
 
 				<div>
 					<div className="flex flex-wrap-reverse gap-10 justify-between">
-						<div className="flex flex-col gap-6 w-full max-w-screen-sm">
+						<div className="flex flex-col gap-6 w-full max-w-screen-md">
 							<Container name="Front-end" bgWhite />
 
 							<div className="flex">
 								<Container name="Styling" />
-								<button className="w-full flex justify-center items-center">
+								<button className="sm:w-full p-5 flex justify-center items-center">
 									<Link
 										href={
 											"https://github.com/iamsuudi/messaging-app"
@@ -114,7 +114,7 @@ export default function AboutMe() {
 							</div>
 						</div>
 
-						<div className="w-80 h-96 bg-foreground/50 mb-auto"></div>
+						<div className="max-w-96 h-[30rem] w-full bg-foreground/50 mb-auto"></div>
 					</div>
 				</div>
 			</div>

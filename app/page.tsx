@@ -3,6 +3,7 @@ import Socials from "./_components/social";
 import { CarouselSpacing } from "./_components/articles-highligh";
 import AboutMe from "./_components/about-me";
 import Worksection from "./_components/work-section";
+import ProjectsSection from "./_components/projects-section";
 
 export default function Home() {
 	return (
@@ -12,6 +13,7 @@ export default function Home() {
 			<CarouselSpacing />
 			<AboutMe />
 			<Worksection />
+			<ProjectsSection />
 		</div>
 	);
 }

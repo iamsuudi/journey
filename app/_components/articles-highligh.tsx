@@ -12,7 +12,7 @@ import {
 export function CarouselSpacing() {
 	return (
 		<div className="w-full flex justify-center py-10 px-5">
-			<Carousel className="w-full max-w-screen-lg ">
+			<Carousel className="w-full max-w-screen-xl">
 				<CarouselContent className="">
 					{Array.from({ length: 5 }).map((_, index) => (
 						<CarouselItem key={index} className="">
