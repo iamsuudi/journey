@@ -7,7 +7,7 @@ import ProjectsSection from "./_components/projects-section";
 
 export default function Home() {
 	return (
-		<div className="p-10 md:p-20">
+		<div className="py-10 md:p-20">
 			<HeroSection />
 			<Socials />
 			<CarouselSpacing />

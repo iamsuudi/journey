@@ -70,7 +70,7 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
 
 export default function AboutMe() {
 	return (
-		<div className="mt-32 flex justify-center">
+		<div className="mt-32 flex justify-center px-5">
 			<div className="max-w-screen-xl w-full space-y-10 md:space-y-20">
 				<div className="flex justify-between flex-wrap gap-5">
 					<span className="text-sm font-mono">.../About me...</span>

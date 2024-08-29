@@ -6,7 +6,7 @@ import { patuaOneFont } from "@/lib/fonts";
 
 export default function HeroSection() {
 	return (
-		<div className="w-full flex flex-col relative gap-4 items-center">
+		<div className="w-full flex flex-col relative gap-4 items-center px-5">
 			<div className="w-full flex relative gap-10 items-center max-w-screen-lg">
 				<div className="hidden gap-3 mt-auto mb-3">
 					<span className="w-5 h-5 rounded-full bg-foreground"></span>

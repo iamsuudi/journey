@@ -13,15 +13,15 @@ const works = [
 
 export default function Worksection() {
 	return (
-		<div className="mt-40  flex justify-center">
+		<div className="mt-40 flex justify-center">
 			<div className="space-y-8 max-w-screen-xl w-full">
-				<p className="text-sm font-mono">.../Work...</p>
+				<p className="text-sm font-mono mx-5">.../Work...</p>
 				<div className="last:border-b-[1px]">
 					{works.map((work) => {
 						return (
 							<div
 								key={work.time}
-								className="group flex border-t-[1px] p-5 gap-5 hover:text-background hover:bg-foreground/95">
+								className="group flex border-t-[1px] p-5 gap-5 md:px-10 hover:text-background hover:bg-foreground/95">
 								<div className="w-full text-foreground/70 group-hover:text-background text-sm flex flex-col">
 									<p>{work.time}</p>
 									<p>{work.duration}</p>

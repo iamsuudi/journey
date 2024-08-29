@@ -28,7 +28,7 @@ const links = [
 
 export default function Socials() {
 	return (
-		<div className="flex justify-center">
+		<div className="flex justify-center px-5">
 			<div className="flex flex-wrap py-10 md:py-20 gap-3 sm:gap-5 max-w-screen-lg w-full">
 				{links.map((link) => {
 					return (

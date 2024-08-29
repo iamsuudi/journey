@@ -92,7 +92,7 @@ const projects = [
 
 export default function ProjectsSection() {
 	return (
-		<div className="flex justify-center mt-40">
+		<div className="flex justify-center mt-40 px-5">
 			<div className="w-full max-w-screen-xl space-y-10">
 				<p
 					className={cn(
