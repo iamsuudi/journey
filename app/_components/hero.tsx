@@ -16,7 +16,7 @@ export default function HeroSection() {
 
 				<p
 					className={cn(
-						"text-5xl sm:text-6xl md:text-8xl mr-auto text-nowrap lg:text-[8rem]",
+						"text-5xl sm:text-6xl md:text-8xl mr-auto text-nowrap lg:text-[8rem] antialiased",
 						patuaOneFont.className
 					)}>
 					Full-stack
@@ -78,7 +78,7 @@ export default function HeroSection() {
 
 				<p
 					className={cn(
-						"text-5xl ml-auto sm:text-6xl md:text-8xl lg:text-[8rem]",
+						"text-5xl ml-auto sm:text-6xl md:text-8xl lg:text-[8rem] antialiased",
 						patuaOneFont.className
 					)}>
 					Developer

@@ -111,7 +111,7 @@ export default function ProjectsSection() {
 								className={cn("gap-10 flex flex-wrap", {
 									"flex-row-reverse": index % 2 === 0,
 								})}>
-								<div className="flex flex-col w-full max-w-md gap-10">
+								<div className="flex flex-col w-full max-w-lg gap-10">
 									<div
 										className="w-full max-w-md aspect-video rounded-3xl h-fit"
 										style={{
@@ -128,7 +128,7 @@ export default function ProjectsSection() {
 									</button>
 								</div>
 
-								<div className="w-full h-full max-w-lg space-y-10">
+								<div className="w-full h-full max-w-screen-sm space-y-10">
 									<p
 										className={cn(
 											"text-lg",
@@ -142,6 +142,7 @@ export default function ProjectsSection() {
 											return (
 												<Button
 													variant={"outline"}
+													size={"sm"}
 													className="px-8 rounded-full"
 													key={project.title + tech}>
 													{tech}

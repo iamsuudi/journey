@@ -15,7 +15,9 @@ export default function NavBar() {
 	return (
 		<div className="w-full fixed top-0 backdrop-blur-lg z-10 flex justify-center">
 			<nav className="w-full flex items-center max-w-screen-xl mx-auto justify-between py-1 sm:p-2">
-				<p className={cn("ml-3", sevillanaFont.className)}>@iamsuudi</p>
+				<p className={cn(sevillanaFont.className, "ml-3 antialiased")}>
+					@iamsuudi
+				</p>
 
 				<ul className="flex">
 					<li hidden={pathname.startsWith("/blogs")}>
