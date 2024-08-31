@@ -92,8 +92,8 @@ const projects = [
 
 export default function ProjectsSection() {
 	return (
-		<div className="flex justify-center mt-40 px-5">
-			<div className="w-full max-w-screen-xl space-y-10">
+		<div className="flex justify-center px-5 mt-40">
+			<div className="w-full max-w-screen-lg space-y-10">
 				<p
 					className={cn(
 						"text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap lg:text-[8rem]",
@@ -108,10 +108,10 @@ export default function ProjectsSection() {
 						return (
 							<div
 								key={project.title}
-								className={cn("gap-10 flex flex-wrap", {
+								className={cn("gap-10 flex flex-wrap justify-between", {
 									"flex-row-reverse": index % 2 === 0,
 								})}>
-								<div className="flex flex-col w-full max-w-lg gap-10">
+								<div className="flex flex-col w-full max-w-md gap-10">
 									<div
 										className="w-full max-w-md aspect-video rounded-3xl h-fit"
 										style={{
@@ -128,7 +128,7 @@ export default function ProjectsSection() {
 									</button>
 								</div>
 
-								<div className="w-full h-full max-w-screen-sm space-y-10">
+								<div className="w-full h-full max-w-md space-y-10">
 									<p
 										className={cn(
 											"text-lg",

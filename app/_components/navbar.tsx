@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import ModeToggle from "@/components/ui/mode-toggle";
 import { cn } from "@/lib/utils";
-import { sevillanaFont } from "@/lib/fonts";
+import { dancing_ScriptFont } from "@/lib/fonts";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRightIcon } from "lucide-react";
 
@@ -13,9 +13,9 @@ export default function NavBar() {
 	const pathname = usePathname();
 
 	return (
-		<div className="w-full fixed top-0 backdrop-blur-lg z-10 flex justify-center">
-			<nav className="w-full flex items-center max-w-screen-xl mx-auto justify-between py-1 sm:p-2">
-				<p className={cn(sevillanaFont.className, "ml-3 antialiased")}>
+		<div className="fixed top-0 z-10 flex justify-center w-full backdrop-blur-lg">
+			<nav className="flex items-center justify-between w-full max-w-screen-xl py-1 mx-auto sm:p-2">
+				<p className={cn(dancing_ScriptFont.className, "ml-3 antialiased text-sm")}>
 					@iamsuudi
 				</p>
 
@@ -25,7 +25,7 @@ export default function NavBar() {
 							variant={"link"}
 							size={"sm"}
 							asChild
-							className="text-foreground/80 hover:text-foreground text-xs sm:text-sm">
+							className="text-xs text-foreground/80 hover:text-foreground sm:text-sm">
 							<Link href={"/blogs"}>
 								Blogs{" "}
 								<ArrowUpRightIcon className="w-3 h-3 ml-1" />
@@ -37,7 +37,7 @@ export default function NavBar() {
 							variant={"link"}
 							size={"sm"}
 							asChild
-							className="text-foreground/80 hover:text-foreground text-xs sm:text-sm">
+							className="text-xs text-foreground/80 hover:text-foreground sm:text-sm">
 							<Link href={"/"}>
 								Home
 								<ArrowUpRightIcon className="w-3 h-3 ml-1" />
@@ -49,7 +49,7 @@ export default function NavBar() {
 							variant={"link"}
 							size={"sm"}
 							asChild
-							className="text-foreground/80 hover:text-foreground text-xs sm:text-sm">
+							className="text-xs text-foreground/80 hover:text-foreground sm:text-sm">
 							<Link href={"/projects"}>
 								Projects
 								<ArrowUpRightIcon className="w-3 h-3 ml-1" />

@@ -27,20 +27,20 @@ const links = [
 		href: "https://discord.com/users/1147595040319868999",
 	},
 	{
-		name: "Telegram",
-		icon: <FaTelegram />,
-		href: "https://t.me/iamsuudi",
-	},
-	{
 		name: "Email",
 		icon: <BiLogoGmail />,
 		href: "mailto:suudiabdulfetah@gmail.com",
 	},
-	{
-		name: "WhatsApp",
-		icon: <FaWhatsapp />,
-		href: "https://wa.me/+251991752985",
-	},
+	// {
+	// 	name: "Telegram",
+	// 	icon: <FaTelegram />,
+	// 	href: "https://t.me/iamsuudi",
+	// },
+	// {
+	// 	name: "WhatsApp",
+	// 	icon: <FaWhatsapp />,
+	// 	href: "https://wa.me/+251991752985",
+	// },
 ];
 
 export default function Socials({ footer }: { footer?: boolean }) {
@@ -48,8 +48,8 @@ export default function Socials({ footer }: { footer?: boolean }) {
 		<div className="flex justify-center px-5">
 			<div
 				className={cn(
-					"flex flex-wrap w-full max-w-screen-xl gap-3 py-10 sm:gap-5 md:justify-between",
-					{ "md:py-20 max-w-screen-lg": !footer }
+					"flex flex-wrap w-full max-w-screen-lg gap-3 py-10 sm:gap-5",
+					{ "md:py-20": !footer }
 				)}>
 				{links.map((link) => {
 					return (
