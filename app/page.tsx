@@ -8,7 +8,7 @@ import Footer from "./_components/footer";
 
 export default function Home() {
 	return (
-		<div className="py-10 pb-0 md:p-20 md:pb-0 dark:bg-black">
+		<div className="py-10 pb-0 md:p-20 md:pb-0">
 			<HeroSection />
 			<Socials />
 			<CarouselSpacing />
