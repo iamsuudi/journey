@@ -39,7 +39,7 @@ const List = ({ item, className, index, activeItem, ...props }: ImageProps) => {
 				<div className="absolute bottom-4 left-4 min-w-fit text-white md:bottom-8 md:left-8">
 					<WaveReveal
 						duration="1000ms"
-						className="items-start justify-start text-xl sm:text-2xl md:text-6xl"
+						className="items-start justify-start text-lg sm:text-2xl md:text-5xl"
 						text={item.title}
 						direction="up"
 					/>
@@ -51,16 +51,16 @@ const List = ({ item, className, index, activeItem, ...props }: ImageProps) => {
 
 const items = [
 	{
-		image: "https://images.unsplash.com/photo-1541753236788-b0ac1fc5009d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3",
-		title: "Mountains",
+		image: "https://media.licdn.com/dms/image/D5612AQF5rTJ_o63x4A/article-cover_image-shrink_720_1280/0/1716992507183?e=2147483647&v=beta&t=ITHIXE3ryB-artG1dNje12AOQ4LlSbVDacBO55lq4-o",
+		title: "",
 	},
 	{
-		image: "https://images.unsplash.com/photo-1718027808460-7069cf0ca9ae?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3",
-		title: "Great Wall of China",
+		image: "https://cdn.prod.website-files.com/6344c9cef89d6f2270a38908/6584ce50b417f2b4cfae947a_Mobile%20App%20Developer%20Stats%2C%20Trends%2C%20and%20Forecasts%20for%202024.webp",
+		title: "MobileApps",
 	},
 	{
-		image: "https://images.unsplash.com/photo-1584968173934-bc0b588eb806?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3",
-		title: "Texture & Patterns",
+		image: "https://community.aws/raw-post-images/concepts/devops-essentials/images/devops_loop.jpeg?imgSize=1600x960",
+		title: "",
 	},
 ];
 
