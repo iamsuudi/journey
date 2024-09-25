@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { patuaOneFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { ArrowDown, ArrowRight, ArrowUp } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -141,8 +141,8 @@ function ArticlesSection() {
 
                 <hr />
 
-                <div className="flex gap-5">
-                    <div className="lg:flex flex-col gap-3 hidden">
+                <div className="flex flex-col-reverse lg:flex-row gap-5 items-center lg:items-start">
+                    <div className="flex lg:flex-col flex-row gap-3 w-fit">
                         <Button
                             variant={"outline"}
                             className={cn({
@@ -151,7 +151,8 @@ function ArticlesSection() {
                             })}
                             onClick={decrementPage}
                         >
-                            <ArrowUp className="scale-[2] size-full" />
+                            <ArrowUp className="scale-[2] size-full lg:block hidden" />
+                            <ArrowLeft className="scale-[2] size-full lg:hidden" />
                         </Button>
                         <Button
                             variant={
@@ -183,7 +184,8 @@ function ArticlesSection() {
                             })}
                             onClick={incrementPage}
                         >
-                            <ArrowDown className="scale-[2] size-full" />
+                            <ArrowDown className="scale-[2] size-full lg:block hidden" />
+                            <ArrowRight className="scale-[2] size-full lg:hidden" />
                         </Button>
                     </div>
 
