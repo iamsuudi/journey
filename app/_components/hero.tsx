@@ -114,7 +114,7 @@ export default function HeroSection() {
 
                 <Link
                     href={"/projects"}
-                    className="gap-2 flex md:hidden mr-auto"
+                    className="gap-2 flex md:hidden mr-auto mt-5"
                 >
                     <Button className="rounded-full w-60">
                         <span className="mr-auto font-bold ml-2">Projects</span>

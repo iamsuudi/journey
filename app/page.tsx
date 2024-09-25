@@ -9,7 +9,7 @@ import ArticlesSection from "./_components/articles_section";
 
 export default function Home() {
 	return (
-		<div className="py-10 pb-0 md:p-20 md:pb-0">
+		<div className="py-10 pb-0 md:p-20 md:pb-0 overflow-x-hidden">
 			<HeroSection />
 			<Socials />
 			<CarouselSpacing />
