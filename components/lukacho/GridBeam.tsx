@@ -17,8 +17,8 @@ export const GridBeam: React.FC<{
 export const Beam = () => {
     return (
         <svg
-            width="120"
-            height="120"
+            width="100vwd"
+            height="50dvh"
             viewBox="0 0 156 63"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ export const Beam = () => {
             <path
                 d="M31 .5h32M0 .5h32m30 31h32m-1 0h32m-1 31h32M62.5 32V0m62 63V31"
                 stroke="url(#grad1)"
-                strokeWidth={2}
+                strokeWidth={0.2}
             />
             <defs>
                 <motion.linearGradient
@@ -48,11 +48,11 @@ export const Beam = () => {
                     animate="animate"
                     initial="initial"
                     transition={{
-                        duration: 1.8,
+                        duration: 3.6,
                         repeat: Infinity,
                         repeatType: "loop",
                         ease: "linear",
-                        repeatDelay: 2,
+                        repeatDelay: 1,
                     }}
                     id="grad1"
                 >
