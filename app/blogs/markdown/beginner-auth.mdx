@@ -1,0 +1,58 @@
+# Beginner Auth in React and Express with JWT
+
+In this post, we'll cover how to build a simple authentication flow in a **React** frontend and **Express** backend using **JWT (JSON Web Tokens)** and **localStorage**. This is a great starting point for building secure apps and learning how to manage authentication.
+
+## What is JWT?
+
+JWT (JSON Web Token) is a standard for securely transmitting information between a client and a server. It is commonly used for authentication purposes. A JWT typically consists of three parts:
+
+1. **Header**: Contains the type of token (JWT) and the signing algorithm.
+2. **Payload**: Contains the claims (data about the user or session).
+3. **Signature**: A hashed version of the header and payload combined with a secret key.
+
+When the user logs in, the server sends a signed JWT to the client, which the client stores (e.g., in localStorage). The client includes this token in subsequent requests to prove their identity.
+
+## Backend: Setting up JWT Authentication in Express
+
+### Step 1: Set up an Express project
+
+First, install the required packages:
+
+```bash
+npm install express jsonwebtoken bcryptjs cors
+```
+
+```javascript
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+// Hardcoded user (in a real app, fetch this from a database)
+const user = {
+  id: 1,
+  username: 'admin',
+  password: bcrypt.hashSync('password123', 8)  // Password is hashed
+};
+
+const secretKey = 'your-secret-key';
+
+exports.login = (req, res) => {
+  const { username, password } = req.body;
+
+  // Check if the username matches
+  if (username !== user.username) {
+    return res.status(400).json({ message: 'Invalid username or password' });
+  }
+
+  // Check if the password matches
+  const passwordIsValid = bcrypt.compareSync(password, user.password);
+  if (!passwordIsValid) {
+    return res.status(400).json({ message: 'Invalid username or password' });
+  }
+
+  // Generate JWT
+  const token = jwt.sign({ id: user.id }, secretKey, { expiresIn: '1h' });
+
+  res.json({ token });
+};
+
+```
