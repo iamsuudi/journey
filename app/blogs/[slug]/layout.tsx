@@ -12,7 +12,7 @@ function Layout({ children }: { children: React.ReactNode }) {
             <Button
                 size={"sm"}
                 variant={"link"}
-                className="px-0 absolute -top-10"
+                className="px-0 absolute -top-14"
                 onClick={() => router.back()}
             >
                 <ArrowLeft className="size-4" />

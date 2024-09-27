@@ -7,96 +7,9 @@ import { cn } from "@/lib/utils";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { blogs } from "../blogs/blogs";
 
-const articles = [
-    {
-        id: "articel-1",
-        title: "1 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-2",
-        title: "2 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-3",
-        title: "3 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-4",
-        title: "4 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-5",
-        title: "5 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-6",
-        title: "6 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-7",
-        title: "7 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-8",
-        title: "8 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-9",
-        title: "9 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-10",
-        title: "10 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-11",
-        title: "11 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-12",
-        title: "12 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-13",
-        title: "13 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-14",
-        title: "14 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-15",
-        title: "15 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-16",
-        title: "16 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-    {
-        id: "articel-17",
-        title: "17 The simplest example is kafka + golang",
-        body: "This article presents a simple way to implement a micro-service architecture using Kafka, Golang and Docker",
-    },
-];
-
-const totalArticles = articles.length;
+const totalArticles = blogs.length;
 const articlesPerPage = 4;
 const totalPages = Math.ceil(totalArticles / articlesPerPage);
 
@@ -193,16 +106,16 @@ function ArticlesSection() {
                         {fetchArticlesByPage(currentPage).map((article) => {
                             return (
                                 <Card
-                                    key={article.id}
+                                    key={article.href}
                                     className="bg-white/5 py-5 px-8 max-w-sm w-full space-y-6 rounded-3xl"
                                 >
                                     <h3 className="font-bold text-xl">
                                         {article.title}
                                     </h3>
-                                    <p className="text-sm">{article.body}</p>
+                                    <p className="text-sm">{article.description}</p>
                                     <div>
                                         <Link
-                                            href={"/projects"}
+                                            href={article.href}
                                             className="gap-2 flex"
                                         >
                                             <Button className="rounded-full">
@@ -235,5 +148,5 @@ function fetchArticlesByPage(page = 1) {
      */
     const to = page * 4;
     const from = to - 4;
-    return articles.slice(from, to);
+    return blogs.slice(from, to);
 }

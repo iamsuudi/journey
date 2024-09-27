@@ -1,0 +1,253 @@
+![](https://ik.imagekit.io/1xdonvuj2/express-app.png?updatedAt=1727457410729)
+
+### **Setting Up an Express App: A Step-by-Step Guide with Best Practices for Folder Structure**
+
+---
+
+When building a Node.js backend, Express is one of the most popular frameworks due to its simplicity and flexibility. This guide will walk you through setting up an Express app, focusing on the best practices for structuring your project folders to ensure scalability and maintainability. We will also implement environment variables using a dedicated `utils/config.js` file.
+
+---
+
+### **Setting Up an Express App**
+
+#### **Step 1: Initialize a Node.js Project**
+
+Before you begin, ensure that Node.js is installed on your machine. Start by creating a new directory for your project and navigating to it via the terminal:
+
+```bash
+mkdir my-express-app
+cd my-express-app
+```
+
+Then, initialize your project with `npm`:
+
+```bash
+npm init -y
+```
+
+This will create a `package.json` file, which stores project metadata and dependencies.
+
+#### **Step 2: Install Express and Other Dependencies**
+
+Next, install Express and some other helpful dependencies, including `dotenv` for handling environment variables and `nodemon` for automatic server restarts during development:
+
+```bash
+npm install express dotenv
+npm install --save-dev nodemon
+```
+
+`dotenv` will allow us to use environment variables, and `nodemon` will save time by restarting the server automatically whenever file changes are detected.
+
+#### **Step 3: Set Up the Basic Express Server**
+
+Now, create an `index.js` file and configure a simple Express server. We’ll also load environment variables using a `utils/config.js` file:
+
+**Folder structure:**
+
+```
+my-express-app/
+├── src/
+│   ├── utils/
+│   │   └── config.js
+│   └── app.js
+├── .env
+├── package.json
+└── README.md
+```
+
+**1. Create `src/utils/config.js` to manage environment variables:**
+
+```javascript
+// src/utils/config.js
+
+require("dotenv").config(); // Load environment variables from .env file
+
+module.exports = {
+    PORT: process.env.PORT || 3000,
+    DATABASE_URL: process.env.DATABASE_URL,
+    JWT_SECRET: process.env.JWT_SECRET,
+    API_KEY: process.env.API_KEY,
+    // Add other environment variables here
+};
+```
+
+In your `.env` file, add the following:
+
+```bash
+PORT=5000
+DATABASE_URL=your_database_url_here
+JWT_SECRET=your_jwt_secret_here
+API_KEY=your_api_key_here
+```
+
+**2. Create `src/app.js` to set up the Express app:**
+
+```javascript
+// src/app.js
+
+const express = require("express");
+const config = require("./utils/config"); // Load config
+const app = express();
+
+// Middleware
+app.use(express.json());
+
+// Define a simple route
+app.get("/", (req, res) => {
+    res.send("Hello, Express!");
+});
+
+module.exports = app;
+```
+
+**3. Update `index.js` to use the config and app:**
+
+```javascript
+// index.js
+
+const app = require("./src/app");
+const config = require("./src/utils/config");
+
+// Start the server
+app.listen(config.PORT, () => {
+    console.log(`Server is running on port ${config.PORT}`);
+});
+```
+
+You can start your server with:
+
+```bash
+node index.js
+```
+
+Or for development, using `nodemon`:
+
+```bash
+npx nodemon index.js
+```
+
+---
+
+### **Best Practices for Folder Structure**
+
+As your Express app grows, a well-structured folder system becomes essential for scalability and maintainability. Below is a common folder structure used in professional Express applications.
+
+#### **Recommended Folder Structure:**
+
+```
+my-express-app/
+│
+├── src/              # Source code
+│   ├── controllers/  # Request handler functions
+│   ├── routes/       # API route definitions
+│   ├── models/       # Database models (e.g., Mongoose, Sequelize)
+│   ├── middlewares/  # Custom middleware functions
+│   ├── utils/        # Utility functions and config
+│   └── app.js        # Express app initialization
+│
+├── public/           # Static files (CSS, images)
+├── node_modules/     # Installed dependencies
+├── .env              # Environment variables
+├── .gitignore        # Files to ignore in version control
+├── package.json      # Project metadata and dependencies
+└── README.md         # Documentation for your app
+```
+
+Let’s break down the purpose of each folder:
+
+-   **`src/`**: Contains all source code.
+    -   **`controllers/`**: Stores request handler functions for different routes.
+    -   **`routes/`**: Defines the API endpoints.
+    -   **`models/`**: Holds database models (e.g., Mongoose or Sequelize models).
+    -   **`middlewares/`**: Contains custom middleware logic (e.g., authentication, validation).
+    -   **`utils/`**: Contains utility functions and configuration (e.g., environment variables in `config.js`).
+    -   **`app.js`**: Initializes the Express app and sets up routes and middleware.
+
+---
+
+### **3. Modularization and Separation of Concerns**
+
+To ensure the code is maintainable, use the **Separation of Concerns** principle. This means keeping different concerns (logic, routing, and models) in different modules.
+
+-   **Routing Logic** should live in `routes/`.
+-   **Business Logic** should live in `controllers/`.
+-   **Configuration** should be handled in `utils/config.js` as demonstrated.
+
+---
+
+### **4. Example: Building User Routes and Controller**
+
+Let’s see a quick example of building modularized routes and controllers:
+
+#### **Create a User Controller**
+
+In `src/controllers/userController.js`:
+
+```javascript
+// src/controllers/userController.js
+
+exports.getAllUsers = (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "Fetching all users",
+    });
+};
+
+exports.createUser = (req, res) => {
+    const { name, email } = req.body;
+    // Logic to create a user
+    res.status(201).json({
+        success: true,
+        message: "User created successfully",
+    });
+};
+```
+
+#### **Create User Routes**
+
+In `src/routes/userRoutes.js`:
+
+```javascript
+const express = require("express");
+const userController = require("../controllers/userController");
+const router = express.Router();
+
+router.get("/users", userController.getAllUsers);
+router.post("/users", userController.createUser);
+
+module.exports = router;
+```
+
+#### **Register Routes in the App**
+
+In `src/app.js`:
+
+```javascript
+const express = require("express");
+const userRoutes = require("./routes/userRoutes");
+const app = express();
+
+app.use(express.json());
+app.use("/api", userRoutes);
+
+module.exports = app;
+```
+
+Finally, update your `index.js` to use `config.js`:
+
+```javascript
+const app = require("./src/app");
+const config = require("./src/utils/config");
+
+app.listen(config.PORT, () => {
+    console.log(`Server is running on port ${config.PORT}`);
+});
+```
+
+---
+
+### **5. Conclusion**
+
+Using a `utils/config.js` file to manage environment variables and a modular folder structure ensures that your Express app is both scalable and maintainable. By organizing your app following best practices, you ensure that as your codebase grows, it remains manageable and easy to maintain.
+
+Next, we will explore how to connect your Express app to a database like MongoDB or PostgreSQL in future posts.
