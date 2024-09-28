@@ -8,7 +8,7 @@ export const GridBeam: React.FC<{
     children: React.ReactNode;
     className?: string;
 }> = ({ children, className }) => (
-    <div className={cn("relative w-full min-h-full", className)}>
+    <div className={cn("relative w-full h-fit", className)}>
         <Beam />
         {children}
     </div>
@@ -17,8 +17,8 @@ export const GridBeam: React.FC<{
 export const Beam = () => {
     return (
         <svg
-            width="100vwd"
-            height="50dvh"
+            width="100%"
+            height="100%"
             viewBox="0 0 156 63"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ export const Beam = () => {
             <path
                 d="M31 .5h32M0 .5h32m30 31h32m-1 0h32m-1 31h32M62.5 32V0m62 63V31"
                 stroke="url(#grad1)"
-                strokeWidth={0.2}
+                strokeWidth={1.0}
             />
             <defs>
                 <motion.linearGradient

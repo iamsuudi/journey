@@ -32,6 +32,7 @@ const skills: { [key: string]: string[] } = {
 		"GSAP",
 	],
 	"Back-end": [
+		"Golang",
 		"NodeJs",
 		"ExpressJs",
 		"MongoDB",
@@ -39,7 +40,7 @@ const skills: { [key: string]: string[] } = {
 		"Prisma",
 		"Mongoose",
 	],
-	DevOps: ["Docker", "CI/CD", "Bash"],
+	DevOps: ["Nginx", "Docker", "(CI/CD)", "Bash"],
 };
 
 function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
@@ -91,7 +92,7 @@ export default function AboutMe() {
 								<button className="sm:w-full p-5 flex justify-center items-center">
 									<Link
 										href={
-											"https://github.com/iamsuudi/messaging-app"
+											"https://github.com/iamsuudi"
 										}
 										className="relative">
 										<FaGithub className="size-10 p-1 rounded-full" />

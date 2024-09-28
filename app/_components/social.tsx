@@ -31,11 +31,11 @@ const links = [
 		icon: <BiLogoGmail />,
 		href: "mailto:suudiabdulfetah@gmail.com",
 	},
-	// {
-	// 	name: "Telegram",
-	// 	icon: <FaTelegram />,
-	// 	href: "https://t.me/iamsuudi",
-	// },
+	{
+		name: "Telegram",
+		icon: <FaTelegram />,
+		href: "https://t.me/iamsuudi",
+	},
 	// {
 	// 	name: "WhatsApp",
 	// 	icon: <FaWhatsapp />,
