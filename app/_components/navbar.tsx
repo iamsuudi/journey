@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import ModeToggle from "@/components/ui/mode-toggle";
 import { cn } from "@/lib/utils";
 import { dancing_ScriptFont } from "@/lib/fonts";
 import { Button } from "@/components/ui/button";
@@ -15,9 +14,9 @@ export default function NavBar() {
 	return (
 		<div className="fixed top-0 z-10 flex justify-center w-full backdrop-blur-lg">
 			<nav className="flex items-center justify-between w-full max-w-screen-xl py-1 mx-auto sm:p-2">
-				<p className={cn(dancing_ScriptFont.className, "ml-3 antialiased text-sm")}>
+				<Link href={"/"} className={cn(dancing_ScriptFont.className, "ml-3 antialiased text-sm")}>
 					@iamsuudi
-				</p>
+				</Link>
 
 				<ul className="flex">
 					<li hidden={pathname.startsWith("/blogs")}>
