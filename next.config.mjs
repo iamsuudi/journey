@@ -10,6 +10,12 @@ const nextConfig = {
                 port: "",
                 pathname: "/**",
             },
+            {
+                protocol: "https",
+                hostname: "**.imagekit.io",
+                port: "",
+                pathname: "/**",
+            },
         ],
     },
     // Configure `pageExtensions` to include markdown and MDX files
