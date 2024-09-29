@@ -16,9 +16,11 @@ const projects = [
 				exercitationem, necessitatibus id mollitia voluptates maiores
 				aperiam dolores odio delectus cumque reiciendis?`,
         ],
-        imageDesktop: "https://ik.imagekit.io/1xdonvuj2/project-one-desktop.png?updatedAt=1727589199044",
-        imageMobile: "https://ik.imagekit.io/1xdonvuj2/project-one-mobile.png?updatedAt=1727589389184",
-        href: "/projects/3",
+        imageDesktop:
+            "https://ik.imagekit.io/1xdonvuj2/project-one-desktop.png?updatedAt=1727589199044",
+        imageMobile:
+            "https://ik.imagekit.io/1xdonvuj2/project-one-mobile.png?updatedAt=1727589389184",
+        href: "/projects/hinta-ems",
         technologies: [
             "Typescript",
             "React",
@@ -37,9 +39,11 @@ const projects = [
                 exercitationem, necessitatibus id mollitia voluptates maiores
                 aperiam dolores odio delectus cumque reiciendis?`,
         ],
-        imageDesktop: "https://ik.imagekit.io/1xdonvuj2/project-two.png?updatedAt=1727590217347",
-        imageMobile: "https://ik.imagekit.io/1xdonvuj2/project-two.png?updatedAt=1727590217347",
-        href: "/projects/1",
+        imageDesktop:
+            "https://ik.imagekit.io/1xdonvuj2/project-two.png?updatedAt=1727590217347",
+        imageMobile:
+            "https://ik.imagekit.io/1xdonvuj2/project-two.png?updatedAt=1727590217347",
+        href: "/projects/chat-app",
         technologies: [
             "Typescript",
             "React",
@@ -58,9 +62,11 @@ const projects = [
 				exercitationem, necessitatibus id mollitia voluptates maiores
 				aperiam dolores odio delectus cumque reiciendis?`,
         ],
-        imageDesktop: "https://ik.imagekit.io/1xdonvuj2/project-three-desktop.png?updatedAt=1727594829409",
-        imageMobile: "https://ik.imagekit.io/1xdonvuj2/project-three-mobile.png?updatedAt=1727594798202",
-        href: "/projects/4",
+        imageDesktop:
+            "https://ik.imagekit.io/1xdonvuj2/project-three-desktop.png?updatedAt=1727594829409",
+        imageMobile:
+            "https://ik.imagekit.io/1xdonvuj2/project-three-mobile.png?updatedAt=1727594798202",
+        href: "/projects/file-uploader",
         technologies: [
             "Typescript",
             "React",
@@ -98,20 +104,22 @@ export default function ProjectsSection() {
                                     }
                                 )}
                             >
-                                <Image
-                                    src={project.imageDesktop}
-                                    alt=""
-                                    width={1000}
-                                    height={1000}
-                                    className="w-full max-w-screen-sm h-fit xl:block hidden"
-                                 />
-                                <Image
-                                    src={project.imageMobile}
-                                    alt=""
-                                    width={1000}
-                                    height={1000}
-                                    className="w-full max-w-sm h-fit xl:hidden"
-                                 />
+                                <Link href={project.href}>
+                                    <Image
+                                        src={project.imageDesktop}
+                                        alt=""
+                                        width={1000}
+                                        height={1000}
+                                        className="w-full max-w-screen-sm h-fit xl:block hidden hover:cursor-pointer"
+                                    />
+                                    <Image
+                                        src={project.imageMobile}
+                                        alt=""
+                                        width={1000}
+                                        height={1000}
+                                        className="w-full max-w-sm h-fit xl:hidden"
+                                    />
+                                </Link>
 
                                 <div className="w-full h-full max-w-[20rem] space-y-10">
                                     <p
