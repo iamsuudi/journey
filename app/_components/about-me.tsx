@@ -53,7 +53,7 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
             )}
         >
             <CardHeader>
-                <CardTitle className="opacity-50">{name}</CardTitle>
+                <CardTitle className="opacity-60 font-normal">{name}</CardTitle>
                 <CardDescription></CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2 text-sm">
@@ -61,7 +61,7 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
                     if (index === 0) return <span key={skill}>{skill}</span>;
                     return (
                         <Fragment key={skill}>
-                            <span>|</span>
+                            <span>{" / "}</span>
                             <span>{skill}</span>
                         </Fragment>
                     );
@@ -79,7 +79,7 @@ export default function AboutMe() {
                     <span className="text-sm font-mono">.../About me...</span>
                     <p className="max-w-96 text-foreground/70 mx-auto mt-5">
                         Hello, I am Abdulfetah Suudi. A full-stack developer
-                        with experience building dynamic web applications and
+                        with the experience of building dynamic web applications and
                         mobile apps.
                     </p>
                 </div>

@@ -82,14 +82,15 @@ export default function ProjectsSection() {
     return (
         <div className="flex justify-center px-5 mt-40">
             <div className="w-full max-w-screen-lg space-y-10">
-                <p
+                {/* <p
                     className={cn(
                         "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap lg:text-[8rem]",
                         patuaOneFont.className
                     )}
                 >
                     Projects
-                </p>
+                </p> */}
+                <p className="text-sm font-mono mx-5">.../Projects...</p>
 
                 <hr />
                 <div className="space-y-40">

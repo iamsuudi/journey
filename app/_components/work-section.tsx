@@ -1,6 +1,10 @@
-import { dancing_ScriptFont } from "@/lib/fonts";
+import { patuaOneFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { formatDistanceStrict, formatDistanceToNowStrict } from "date-fns";
+import {
+    formatDistanceStrict,
+    formatDistanceToNow,
+    formatDistanceToNowStrict,
+} from "date-fns";
 
 const works = [
     {
@@ -9,7 +13,7 @@ const works = [
             new Date(2024, 4),
             new Date(2024, 6, 25)
         ),
-        company: "HINTA (Govornment Institution)",
+        company: "HINTA (Government Institution)",
         technologies: ["React", "Express"],
         role: "Fullstack developer (contract)",
     },
@@ -36,26 +40,32 @@ export default function Worksection() {
     return (
         <div className="mt-40 flex justify-center">
             <div className="space-y-8 max-w-screen-xl w-full">
-                <p className="text-sm font-mono mx-5">.../Work...</p>
-                <div className="last:border-b-[1px]">
-                    {works.map((work) => {
+                {/* <p className="text-sm font-mono mx-5">.../Work...</p> */}
+                <p
+                    className={cn(
+                        "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap",
+                        patuaOneFont.className
+                    )}
+                >
+                    Work
+                </p>
+                <div className="">
+                    {works.map((work, i) => {
                         return (
                             <div
                                 key={work.time}
-                                className="group flex border-t-[1px] p-5 gap-5 md:px-10 hover:text-background hover:bg-foreground/95"
+                                className={cn(
+                                    { "border-b-[1px]": i == works.length - 1 },
+                                    "group flex border-t-[1px] p-5 gap-5 md:px-10 hover:text-background hover:bg-foreground/95"
+                                )}
                             >
                                 <div className="w-2/5 text-foreground/70 group-hover:text-background flex flex-col">
                                     <p className="text-md font-bold">
                                         {work.time}
                                     </p>
-                                    <p
-                                        className={cn(
-                                            "text-xs",
-                                            dancing_ScriptFont.className
-                                        )}
-                                    >
+                                    <em className={cn("text-xs")}>
                                         {work.duration}
-                                    </p>
+                                    </em>
                                 </div>
                                 <div className="flex gap-3 justify-between w-3/5 flex-wrap font-bold font-mono">
                                     <p className="text-md">{work.company}</p>
@@ -64,6 +74,12 @@ export default function Worksection() {
                             </div>
                         );
                     })}
+                </div>
+                <div className="px-10 flex flex-col items-end">
+                    <p className="text-md text-foreground/80">
+                        Work experience
+                    </p>
+                    <em>{formatDistanceToNow(new Date(2024, 1))}</em>
                 </div>
             </div>
         </div>

@@ -45,7 +45,7 @@ function ArticlesSection() {
             <div className="w-full max-w-screen-lg space-y-10">
                 <p
                     className={cn(
-                        "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap lg:text-[8rem]",
+                        "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap",
                         patuaOneFont.className
                     )}
                 >
