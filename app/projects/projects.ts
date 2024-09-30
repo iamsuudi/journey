@@ -52,13 +52,12 @@ export const projects = [
         ],
     },
     {
-        title: "DaloDrive",
+        title: "File Uploader",
         descriptions: [
-            "Cloud storage",
-            `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-				adipisci alias amet sint molestias ad itaque dolor quam
-				exercitationem, necessitatibus id mollitia voluptates maiores
-				aperiam dolores odio delectus cumque reiciendis?`,
+            `The file uploader project was an ambitious endeavor aimed at creating a cloud storage service similar to Google Drive. 
+            This application allows users to upload files directly to the server while providing a seamless and user-friendly experience.`,
+            `Key features include an image preview functionality, a flexible drag-and-drop box for easy file management, and a robust 
+            authentication system that supports traditional email-password logins and OAuth providers like Google and GitHub.`,
         ],
         imageDesktop:
             "https://ik.imagekit.io/1xdonvuj2/project-three-desktop.png?updatedAt=1727594829409",

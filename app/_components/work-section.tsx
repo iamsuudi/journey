@@ -30,7 +30,7 @@ const works = [
     {
         time: "2024 Sep - Present",
         duration: formatDistanceToNowStrict(new Date(2024, 8)),
-        company: "HulmiTech Agency",
+        company: "HulmiTech",
         technologies: [],
         role: "Fullstack developer (Hybrid)",
     },
