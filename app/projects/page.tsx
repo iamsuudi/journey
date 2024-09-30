@@ -1,9 +1,9 @@
-import React from 'react'
+import HomeMdx from "./markdown/home.mdx";
 
-function Page() {
-  return (
-    <div>Projects</div>
-  )
+export default function Page() {
+    return (
+        <div>
+            <HomeMdx />
+        </div>
+    );
 }
-
-export default Page

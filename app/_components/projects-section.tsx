@@ -5,78 +5,7 @@ import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-
-const projects = [
-    {
-        title: "HINTA",
-        descriptions: [
-            "Full stack system with landing page",
-            `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-				adipisci alias amet sint molestias ad itaque dolor quam
-				exercitationem, necessitatibus id mollitia voluptates maiores
-				aperiam dolores odio delectus cumque reiciendis?`,
-        ],
-        imageDesktop:
-            "https://ik.imagekit.io/1xdonvuj2/project-one-desktop.png?updatedAt=1727589199044",
-        imageMobile:
-            "https://ik.imagekit.io/1xdonvuj2/project-one-mobile.png?updatedAt=1727589389184",
-        href: "/projects/hinta-ems",
-        technologies: [
-            "Typescript",
-            "React",
-            "Express",
-            "Mongodb",
-            "Tailwindcss",
-            "GSAP Animation",
-        ],
-    },
-    {
-        title: "DaloChat",
-        descriptions: [
-            "Real-time messaging app",
-            `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-                adipisci alias amet sint molestias ad itaque dolor quam
-                exercitationem, necessitatibus id mollitia voluptates maiores
-                aperiam dolores odio delectus cumque reiciendis?`,
-        ],
-        imageDesktop:
-            "https://ik.imagekit.io/1xdonvuj2/project-two.png?updatedAt=1727590217347",
-        imageMobile:
-            "https://ik.imagekit.io/1xdonvuj2/project-two.png?updatedAt=1727590217347",
-        href: "/projects/chat-app",
-        technologies: [
-            "Typescript",
-            "React",
-            "Express",
-            "Mongodb",
-            "Tailwindcss",
-            "GSAP Animation",
-        ],
-    },
-    {
-        title: "DaloDrive",
-        descriptions: [
-            "Cloud storage",
-            `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-				adipisci alias amet sint molestias ad itaque dolor quam
-				exercitationem, necessitatibus id mollitia voluptates maiores
-				aperiam dolores odio delectus cumque reiciendis?`,
-        ],
-        imageDesktop:
-            "https://ik.imagekit.io/1xdonvuj2/project-three-desktop.png?updatedAt=1727594829409",
-        imageMobile:
-            "https://ik.imagekit.io/1xdonvuj2/project-three-mobile.png?updatedAt=1727594798202",
-        href: "/projects/file-uploader",
-        technologies: [
-            "Typescript",
-            "React",
-            "Express",
-            "Mongodb",
-            "Tailwindcss",
-            "GSAP Animation",
-        ],
-    },
-];
+import { projects } from "../projects/projects";
 
 export default function ProjectsSection() {
     return (

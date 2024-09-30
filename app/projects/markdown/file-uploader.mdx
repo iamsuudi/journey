@@ -1,0 +1,342 @@
+![](https://ik.imagekit.io/1xdonvuj2/beginner-jwt.png?updatedAt=1727461899067)
+
+### **Beginner’s Guide to Authentication in an Express and React App Using JWT**
+
+Authentication is a key part of almost any web application. One popular way to implement it is using **JSON Web Tokens (JWT)**. This guide will walk you through building a simple authentication flow using Express for the backend, React for the frontend, and JWT stored in the browser's **localStorage**.
+
+---
+
+### **1. What is JWT and Why Use It?**
+
+**JWT (JSON Web Token)** is a compact, URL-safe token used for securely transmitting information between a client and server. JWT is commonly used in stateless authentication where the server doesn't store session information.
+
+The workflow of JWT-based authentication usually looks like this:
+
+1. The user logs in and provides credentials.
+2. If the credentials are valid, the server creates a JWT and sends it to the client.
+3. The client stores the JWT (in localStorage or sessionStorage).
+4. For every subsequent request, the client sends the JWT in the Authorization header to authenticate.
+
+---
+
+### **2. Backend: Setting Up Express for Authentication**
+
+We'll start by creating the Express server that handles user login and generates a JWT for authenticated users.
+
+#### **Step 1: Initialize Express App**
+
+First, create an Express app and install required packages:
+
+```bash
+mkdir express-jwt-auth
+cd express-jwt-auth
+npm init -y
+npm install express jsonwebtoken bcryptjs dotenv
+```
+
+-   **`express`**: The framework we’ll use to build the server.
+-   **`jsonwebtoken`**: A library to generate and verify JWT.
+-   **`bcryptjs`**: Used to hash and verify passwords securely.
+-   **`dotenv`**: Loads environment variables from a `.env` file.
+
+#### **Step 2: Create Basic Server**
+
+In your `src` folder, set up the server in `app.js`:
+
+```javascript
+// src/app.js
+
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const dotenv = require("dotenv");
+const app = express();
+
+// Middleware
+dotenv.config();
+app.use(express.json());
+
+const users = []; // Example in-memory users (this should be a database)
+
+// Register route
+app.post("/register", async (req, res) => {
+    const { username, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10); // Hash password
+    users.push({ username, password: hashedPassword });
+    res.status(201).send("User registered successfully");
+});
+
+// Login route
+app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+    const user = users.find((u) => u.username === username);
+
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+        return res.status(401).send("Invalid credentials");
+    }
+
+    // Create a JWT
+    const token = jwt.sign(
+        { username: user.username },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+    );
+
+    res.json({ token });
+});
+
+// Protected route
+app.get("/protected", (req, res) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) return res.status(401).send("Access denied");
+
+    try {
+        const user = jwt.verify(token, process.env.JWT_SECRET);
+        res.json({ message: "Protected data", user });
+    } catch {
+        res.status(403).send("Invalid token");
+    }
+});
+
+module.exports = app;
+```
+
+**Environment Variables in `.env`:**
+
+```bash
+JWT_SECRET=your_jwt_secret_key
+```
+
+#### **Step 3: Start the Server**
+
+In `index.js`, start the server:
+
+```javascript
+// index.js
+
+const app = require("./src/app");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+```
+
+---
+
+### **3. Frontend: Setting Up React for Authentication**
+
+Now, let’s create a React frontend that communicates with the Express backend. This React app will send login and registration requests, handle JWT storage, and protect routes.
+
+#### **Step 1: Set Up React Project**
+
+Create a new React app:
+
+```bash
+npx create-react-app react-jwt-auth
+cd react-jwt-auth
+npm install axios react-router-dom
+```
+
+-   **`axios`**: To make HTTP requests.
+-   **`react-router-dom`**: To handle navigation and protected routes.
+
+#### **Step 2: Create Authentication Context**
+
+We will manage user authentication state globally using React’s Context API. Create a new `AuthContext` to handle login, logout, and token management.
+
+**`src/context/AuthContext.js`:**
+
+```javascript
+import React, { createContext, useState, useEffect } from "react";
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+    const [token, setToken] = useState(null);
+
+    // Load token from localStorage on app load
+    useEffect(() => {
+        const storedToken = localStorage.getItem("token");
+        if (storedToken) setToken(storedToken);
+    }, []);
+
+    const login = (jwtToken) => {
+        localStorage.setItem("token", jwtToken);
+        setToken(jwtToken);
+    };
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setToken(null);
+    };
+
+    return (
+        <AuthContext.Provider value={{ token, login, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+```
+
+#### **Step 3: Create Login and Register Components**
+
+Now create the login and registration forms and handle authentication with JWT.
+
+**`src/components/Login.js`:**
+
+```javascript
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
+
+const Login = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const { login } = useContext(AuthContext);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("http://localhost:5000/login", {
+                username,
+                password,
+            });
+            login(res.data.token); // Save token in localStorage and context
+        } catch (err) {
+            alert("Login failed");
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <h2>Login</h2>
+            <input
+                type="text"
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Login</button>
+        </form>
+    );
+};
+
+export default Login;
+```
+
+**`src/components/Register.js`:**
+
+```javascript
+import React, { useState } from "react";
+import axios from "axios";
+
+const Register = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:5000/register", {
+                username,
+                password,
+            });
+            alert("User registered successfully");
+        } catch (err) {
+            alert("Registration failed");
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <h2>Register</h2>
+            <input
+                type="text"
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Register</button>
+        </form>
+    );
+};
+
+export default Register;
+```
+
+#### **Step 4: Protect Routes**
+
+We will protect certain routes so they can only be accessed by authenticated users. If a user isn’t logged in, they will be redirected to the login page.
+
+**`src/components/ProtectedRoute.js`:**
+
+```javascript
+import React, { useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+    const { token } = useContext(AuthContext);
+    return (
+        <Route
+            {...rest}
+            render={(props) =>
+                token ? <Component {...props} /> : <Redirect to="/login" />
+            }
+        />
+    );
+};
+
+export default ProtectedRoute;
+```
+
+#### **Step 5: Set Up Routing**
+
+Now integrate routing and protect the necessary routes.
+
+**`src/App.js`:**
+
+```javascript
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthProvider } from "./context/AuthContext";
+
+const ProtectedPage = () => <h1>This is a protected page</h1>;
+
+function App() {
+    return (
+        <AuthProvider>
+            <Router>
+                <Switch>
+                    <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
+                    <ProtectedRoute
+                        path="/protected"
+                        component={ProtectedPage}
+                    />
+                </Switch>
+            </Router>
+        </AuthProvider>
+    );
+}
+
+export default App;
+```
+
+---
+
+### **4. Conclusion**
+
+In this guide, we built a basic authentication system using **Express** for the backend and **React** for the frontend, with **JWT** stored in the browser's **localStorage**. We’ve demonstrated how to create protected routes
