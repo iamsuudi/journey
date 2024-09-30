@@ -51,7 +51,7 @@ export default function ProjectsSection() {
                                     />
                                 </Link>
 
-                                <div className="w-full h-full max-w-[20rem] space-y-10">
+                                <div className="w-full h-full max-w-[20rem] space-y-7">
                                     <p
                                         className={cn(
                                             "text-lg",

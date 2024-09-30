@@ -30,11 +30,12 @@ export const projects = [
     {
         title: "DaloChat",
         descriptions: [
-            "Real-time messaging app",
-            `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-                adipisci alias amet sint molestias ad itaque dolor quam
-                exercitationem, necessitatibus id mollitia voluptates maiores
-                aperiam dolores odio delectus cumque reiciendis?`,
+            `DaloChat was a personal project I built to expand my skills in real-time communication 
+            systems and learn new concepts. It wasn’t meant to be a product or startup, 
+            but rather a hands-on learning experience.`,
+            `The project helped me gain experience in building features like real-time messaging, 
+            group management, and OAuth2-based authentication while ensuring smooth integration 
+            between the front-end and back-end.`,
         ],
         imageDesktop:
             "https://ik.imagekit.io/1xdonvuj2/project-two.png?updatedAt=1727590217347",
