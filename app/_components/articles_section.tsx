@@ -107,21 +107,21 @@ function ArticlesSection() {
                             return (
                                 <Card
                                     key={article.href}
-                                    className="bg-white/5 py-5 px-8 max-w-sm w-full space-y-6 rounded-3xl"
+                                    className="bg-white/5 py-5 px-8 max-w-sm w-full rounded-3xl h-60 flex flex-col gap-6"
                                 >
                                     <h3 className="font-bold text-xl">
                                         {article.title}
                                     </h3>
-                                    <p className="text-sm">{article.description}</p>
+                                    <p className="text-sm mb-auto">{article.description}</p>
                                     <div>
                                         <Link
                                             href={article.href}
                                             className="gap-2 flex"
                                         >
                                             <Button className="rounded-full">
-                                                <span className="font-bold w-40">
+                                                <em className="w-40">
                                                     Read more
-                                                </span>
+                                                </em>
                                             </Button>
                                             <Button className="rounded-full">
                                                 <ArrowRight className="size-3 scale-150" />

@@ -1,0 +1,160 @@
+![](https://ik.imagekit.io/1xdonvuj2/advanced-jwt.png?updatedAt=1727720320498)
+
+### Advanced Authentication with JWT, HTTP-Only Cookies, and React Context (with Axios)
+
+In this advanced setup, we'll use Axios for all API requests instead of `fetch`.
+The flow remains the same, using HTTP-only cookies for storing JWTs and React's context provider to manage user state.
+On page refresh, the app will hit the `/api/me` endpoint to retrieve the current user.
+If the token is expired or missing, the user will be redirected to the login page.
+
+#### Storing Tokens in HTTP-Only Cookies
+
+The server stores JWT tokens in HTTP-only cookies to enhance security.
+Here’s how to send the token in a cookie after a successful login:
+
+```js
+app.post("/api/login", async (req, res) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user || !user.comparePassword(password)) {
+        return res.status(401).send("Invalid credentials");
+    }
+
+    const token = generateToken(user); // Generate JWT
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // Use secure cookies in production
+        sameSite: "Strict",
+    });
+    res.json({ message: "Logged in successfully" });
+});
+```
+
+#### Setting Up React Context for User Data with Axios
+
+We’ll now rewrite the context provider to use Axios for fetching the user data.
+Axios allows you to easily include cookies in requests, which is crucial when dealing with HTTP-only cookies.
+
+First, install Axios:
+
+```bash
+npm install axios
+```
+
+Then modify the `AuthProvider` to use Axios for the API calls:
+
+```jsx
+import React, { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
+
+const AuthContext = createContext(null);
+
+export const useAuth = () => useContext(AuthContext);
+
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get("/api/me", {
+                    withCredentials: true, // Ensures cookies are sent with the request
+                });
+
+                if (response.status === 401) {
+                    // Token expired or missing, redirect to login
+                    window.location.href = "/login";
+                    return;
+                }
+
+                setUser(response.data);
+            } catch (error) {
+                setUser(null); // If not authenticated or error occurs
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUser(); // Fetch user data on component mount
+    }, []);
+
+    return (
+        <AuthContext.Provider value={{ user, setUser, loading }}>
+            {!loading && children}
+        </AuthContext.Provider>
+    );
+};
+```
+
+In this code, Axios is used for the `/api/me` request, with the `withCredentials` option ensuring that the cookie is included in the request.
+If a 401 response is received (token expired or missing), the user is redirected to the login page.
+
+#### Server-Side: Extracting the Token from HTTP-Only Cookies
+
+The server extracts the JWT from the cookie and fetches the user data.
+Here’s the implementation of the `/api/me` endpoint:
+
+```js
+app.get("/api/me", async (req, res) => {
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    try {
+        const decoded = verifyToken(token); // Decode the token to get user info
+        const user = await User.findById(decoded.userId); // Fetch the user from the database
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json(user); // Return user data to the frontend
+    } catch (error) {
+        res.status(401).json({ message: "Invalid token" });
+    }
+});
+```
+
+If the token is invalid or missing, the server returns a 401 response, which triggers a redirect on the frontend.
+Otherwise, the user data is sent back to the client.
+
+#### Redirecting on Token Expiry
+
+On the frontend, if Axios receives a 401 status code from the `/api/me` request, the app redirects the user to the login page.
+When the user logs in again, their credentials will be sent to `/api/login`, and a new token will be set in the cookies.
+
+```jsx
+useEffect(() => {
+    const fetchUser = async () => {
+        try {
+            const response = await axios.get("/api/me", {
+                withCredentials: true,
+            });
+
+            if (response.status === 401) {
+                window.location.href = "/login";
+                return;
+            }
+
+            setUser(response.data);
+        } catch (error) {
+            setUser(null);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    fetchUser();
+}, []);
+```
+
+#### Conclusion
+
+Using Axios alongside HTTP-only cookies to handle authentication in your React app provides a secure and efficient approach.
+By storing JWTs in cookies, you protect tokens from XSS attacks while maintaining the ability to fetch and refresh user data across page reloads.
+The use of React context ensures the user’s session is persistent, and redirecting to the login page when the token expires ensures a smooth authentication flow.
+This approach balances security and usability in a modern web application.
