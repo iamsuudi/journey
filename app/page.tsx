@@ -6,6 +6,7 @@ import Worksection from "./_components/work-section";
 import ProjectsSection from "./_components/projects-section";
 import Footer from "./_components/footer";
 import ArticlesSection from "./_components/articles_section";
+import Skills from "./_components/Skills";
 
 export default function Home() {
 	return (
@@ -14,6 +15,7 @@ export default function Home() {
 			<Socials />
 			<CarouselSpacing />
 			<AboutMe />
+			<Skills />
 			<Worksection />
 			<ProjectsSection />
 			<ArticlesSection />
