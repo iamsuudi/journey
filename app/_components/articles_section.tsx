@@ -1,13 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button, ButtonProps } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { patuaOneFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 import { blogs } from "../blogs/blogs";
+import DecoratedButton from "@/components/DecoratedButton";
+import { Style } from "util";
 
 const totalArticles = blogs.length;
 const articlesPerPage = 4;
@@ -46,6 +47,7 @@ function ArticlesSection() {
                 <p
                     className={cn(
                         "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap",
+                        "text-transparent bg-clip-text bg-gradient-to-b from-foreground to-foreground/70",
                         patuaOneFont.className
                     )}
                 >
@@ -56,42 +58,38 @@ function ArticlesSection() {
 
                 <div className="flex flex-col-reverse lg:flex-row gap-5 items-center lg:items-start">
                     <div className="flex lg:flex-col flex-row gap-3 w-fit">
-                        <Button
+                        <PaginationButton
                             variant={"outline"}
                             className={cn({
-                                "rounded-full w-10 h-10": true,
                                 invisible: second <= 2,
                             })}
                             onClick={decrementPage}
                         >
                             <ArrowUp className="scale-[2] size-full lg:block hidden" />
                             <ArrowLeft className="scale-[2] size-full lg:hidden" />
-                        </Button>
-                        <Button
+                        </PaginationButton>
+                        <PaginationButton
                             variant={
                                 currentPage == first ? "default" : "outline"
                             }
-                            className="rounded-full w-10 h-10"
-                            onClick={handleClick("first")}
+                            onClick={() => handleClick("first")}
                         >
                             {first}
-                        </Button>
-                        <Button
+                        </PaginationButton>
+                        <PaginationButton
                             variant={
                                 currentPage == second ? "default" : "outline"
                             }
                             className={cn({
-                                "rounded-full w-10 h-10": true,
                                 invisible: second > totalPages,
                             })}
-                            onClick={handleClick("second")}
+                            onClick={() => handleClick("second")}
                         >
                             {second}
-                        </Button>
-                        <Button
+                        </PaginationButton>
+                        <PaginationButton
                             variant={"outline"}
                             className={cn({
-                                "rounded-full w-10 h-10": true,
                                 invisible:
                                     second > totalPages || totalPages <= 2,
                             })}
@@ -99,7 +97,7 @@ function ArticlesSection() {
                         >
                             <ArrowDown className="scale-[2] size-full lg:block hidden" />
                             <ArrowRight className="scale-[2] size-full lg:hidden" />
-                        </Button>
+                        </PaginationButton>
                     </div>
 
                     <div className="flex flex-wrap gap-5 w-full justify-center lg:justify-end">
@@ -107,26 +105,20 @@ function ArticlesSection() {
                             return (
                                 <Card
                                     key={article.href}
-                                    className="bg-white/5 py-5 px-8 max-w-sm w-full rounded-3xl h-60 flex flex-col gap-6"
+                                    className="bg-transparent py-5 px-8 max-w-sm w-full rounded-3xl h-60 flex flex-col gap-6"
                                 >
                                     <h3 className="font-bold text-xl">
                                         {article.title}
                                     </h3>
-                                    <p className="text-sm mb-auto">{article.description}</p>
+                                    <p className="text-sm mb-auto">
+                                        {article.description}
+                                    </p>
                                     <div>
-                                        <Link
+                                        <DecoratedButton
                                             href={article.href}
-                                            className="gap-2 flex"
-                                        >
-                                            <Button className="rounded-full">
-                                                <em className="w-40">
-                                                    Read more
-                                                </em>
-                                            </Button>
-                                            <Button className="rounded-full">
-                                                <ArrowRight className="size-3 scale-150" />
-                                            </Button>
-                                        </Link>
+                                            className="flex"
+                                            text="Read more"
+                                        />
                                     </div>
                                 </Card>
                             );
@@ -149,4 +141,35 @@ function fetchArticlesByPage(page = 1) {
     const to = page * 4;
     const from = to - 4;
     return blogs.slice(from, to);
+}
+
+interface Props {
+    children: React.ReactNode;
+    onClick: () => void;
+    variant:
+        | "default"
+        | "outline"
+        | "link"
+        | "destructive"
+        | "secondary"
+        | "ghost"
+        | null
+        | undefined;
+    className?: String;
+}
+
+function PaginationButton({ children, onClick, variant, className }: Props) {
+    return (
+        <Button
+            className={cn(
+                "bg-transparent bg-gradient-to-b from-foreground to-foreground/80",
+                "rounded-full w-10 h-10",
+                className
+            )}
+            onClick={onClick}
+            variant={variant}
+        >
+            {children}
+        </Button>
+    );
 }

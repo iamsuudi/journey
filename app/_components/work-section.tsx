@@ -44,6 +44,7 @@ export default function Worksection() {
                 <p
                     className={cn(
                         "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap mx-5 md:mx-0",
+                        "text-transparent bg-clip-text bg-gradient-to-b from-foreground to-foreground/70",
                         patuaOneFont.className
                     )}
                 >
@@ -56,7 +57,8 @@ export default function Worksection() {
                                 key={work.time}
                                 className={cn(
                                     { "border-b-[1px]": i == works.length - 1 },
-                                    "group flex border-t-[1px] p-5 gap-5 md:px-10 hover:text-background hover:bg-foreground/95"
+                                    "group flex border-t-[1px] p-5 gap-5 md:px-10",
+                                    "hover:text-background hover:bg-gradient-to-b from-foreground to-foreground/90"
                                 )}
                             >
                                 <div className="w-2/5 text-foreground/70 group-hover:text-background flex flex-col">

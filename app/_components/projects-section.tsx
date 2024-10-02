@@ -11,17 +11,10 @@ export default function ProjectsSection() {
     return (
         <div className="flex justify-center px-5 mt-40">
             <div className="w-full max-w-screen-lg space-y-10">
-                {/* <p
-                    className={cn(
-                        "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap lg:text-[8rem]",
-                        patuaOneFont.className
-                    )}
-                >
-                    Projects
-                </p> */}
                 <p className="text-sm font-mono mx-5">.../Projects...</p>
 
                 <hr />
+
                 <div className="space-y-40">
                     {projects.map((project, index) => {
                         return (
@@ -54,8 +47,9 @@ export default function ProjectsSection() {
                                 <div className="w-full h-full max-w-[20rem] space-y-7">
                                     <p
                                         className={cn(
-                                            "text-lg",
-                                            patuaOneFont.className
+                                            "md:text-2xl text-lg",
+                                            patuaOneFont.className,
+                                            "text-transparent bg-clip-text bg-gradient-to-b from-foreground to-foreground/70"
                                         )}
                                     >
                                         {project.title}
@@ -67,7 +61,10 @@ export default function ProjectsSection() {
                                                 <Button
                                                     variant={"outline"}
                                                     size={"sm"}
-                                                    className="px-8 rounded-full"
+                                                    className={cn(
+                                                        "px-8 rounded-full bg-transparent backdrop-blur-lg",
+                                                        "hover:bg-transparent hover:bg-gradient-to-b from-foreground to-foreground/80 hover:text-background"
+                                                    )}
                                                     key={project.title + tech}
                                                 >
                                                     {tech}

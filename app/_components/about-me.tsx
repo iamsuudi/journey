@@ -36,6 +36,7 @@ const skills: { [key: string]: string[] } = {
         "Golang",
         "NodeJs",
         "ExpressJs",
+        "Python",
         "MongoDB",
         "PostgreSQL",
         "Prisma",
@@ -48,8 +49,8 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
     return (
         <Card
             className={cn(
-                { "bg-foreground/90 text-background": bgWhite },
-                "w-full rounded-3xl"
+                "w-full rounded-3xl bg-transparent backdrop-blur-sm border-slate-300/20 border",
+                { "bg-foreground/90 text-background": bgWhite }
             )}
         >
             <CardHeader>
@@ -78,9 +79,19 @@ export default function AboutMe() {
                 <div className="flex justify-between flex-wrap gap-5">
                     <span className="text-sm font-mono">.../About me...</span>
                     <p className="max-w-96 text-foreground/70 mx-auto mt-5">
-                        Hello, I am Abdulfetah Suudi. A full-stack developer
-                        with the experience of building dynamic web applications and
-                        mobile apps.
+                        Hello, I am
+                        <span className="text-foreground">
+                            {" "}
+                            Abdulfetah Suudi.{" "}
+                        </span>
+                        A full-stack developer with the experience of building
+                        dynamic
+                        <span className="text-foreground">
+                            {" "}
+                            web applications{" "}
+                        </span>
+                        and
+                        <span className="text-foreground"> mobile apps.</span>
                     </p>
                 </div>
 
