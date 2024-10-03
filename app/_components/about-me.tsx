@@ -49,8 +49,8 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
     return (
         <Card
             className={cn(
-                "w-full rounded-3xl bg-transparent backdrop-blur-sm border-slate-300/20 border",
-                { "bg-foreground/90 text-background": bgWhite }
+                "w-full rounded-3xl bg-transparent backdrop-blur-sm",
+                { "bg-foreground/80 text-background": bgWhite }
             )}
         >
             <CardHeader>
@@ -74,7 +74,7 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
 
 export default function AboutMe() {
     return (
-        <div className="mt-32 flex justify-center px-5" id="about">
+        <div className="mt-32 flex justify-center px-5 bg-gradient-to-b from-black via-white/5" id="about">
             <div className="max-w-screen-xl w-full space-y-10 md:space-y-20">
                 <div className="flex justify-between flex-wrap gap-5">
                     <span className="text-sm font-mono">.../About me...</span>

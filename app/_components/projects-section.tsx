@@ -21,7 +21,7 @@ export default function ProjectsSection() {
                             <div
                                 key={project.title}
                                 className={cn(
-                                    "gap-10 flex flex-wrap lg:justify-between justify-center",
+                                    "gap-10 flex flex-wrap lg:justify-between justify-center items-center",
                                     {
                                         "flex-row-reverse": index % 2 === 0,
                                     }
@@ -58,17 +58,16 @@ export default function ProjectsSection() {
                                     <div className="flex flex-wrap gap-2">
                                         {project.technologies.map((tech) => {
                                             return (
-                                                <Button
-                                                    variant={"outline"}
-                                                    size={"sm"}
+                                                <button
                                                     className={cn(
-                                                        "px-8 rounded-full bg-transparent backdrop-blur-lg",
+                                                        "text-xs px-6 py-1 border",
+                                                        "rounded-full bg-transparent backdrop-blur-lg",
                                                         "hover:bg-transparent hover:bg-gradient-to-b from-foreground to-foreground/80 hover:text-background"
                                                     )}
                                                     key={project.title + tech}
                                                 >
                                                     {tech}
-                                                </Button>
+                                                </button>
                                             );
                                         })}
                                     </div>

@@ -8,7 +8,7 @@ function Layout({ children }: { children: React.ReactNode }) {
             className={cn(
                 roboto.className,
                 "antialiased",
-                "prose prose-md lg:prose-lg py-10 px-5 dark:prose-invert prose-violet dark:prose-pre:bg-gray-500/20 mx-auto"
+                "prose prose-md lg:prose-lg pb-10 py-32 px-5 dark:prose-invert prose-violet dark:prose-pre:bg-gray-500/20 mx-auto"
             )}
         >
             {children}

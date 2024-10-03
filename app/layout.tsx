@@ -8,31 +8,33 @@ import NavBar from "@/app/_components/navbar";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-	title: "Abdulfetah Suudi",
-	description: "Abdulfetah Suudi's portfolio",
+    title: "Abdulfetah Suudi",
+    description: "Abdulfetah Suudi's portfolio",
 };
 
 export default function RootLayout({
-	children,
+    children,
 }: Readonly<{
-	children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<body
-				className={cn(
-					"min-h-screen bg-black font-sans antialiased pt-20",
-					inter.variable
-				)}>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="dark"
-					enableSystem
-					disableTransitionOnChange>
-					<NavBar />
-					{children}
-				</ThemeProvider>
-			</body>
-		</html>
-	);
+    return (
+        <html lang="en">
+            <body
+                className={cn(
+                    "min-h-screen font-sans antialiased bg-black",
+                    inter.variable
+                )}
+            >
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <NavBar />
+                    {children}
+                </ThemeProvider>
+            </body>
+        </html>
+    );
 }

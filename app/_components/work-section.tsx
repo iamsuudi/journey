@@ -43,7 +43,7 @@ export default function Worksection() {
                 {/* <p className="text-sm font-mono mx-5">.../Work...</p> */}
                 <p
                     className={cn(
-                        "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap mx-5 md:mx-0",
+                        "text-5xl text-right sm:text-6xl md:text-8xl mr-auto text-nowrap mx-5 xl:mx-0",
                         "text-transparent bg-clip-text bg-gradient-to-b from-foreground to-foreground/70",
                         patuaOneFont.className
                     )}

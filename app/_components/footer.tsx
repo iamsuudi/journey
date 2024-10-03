@@ -3,14 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { patuaOneFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Socials from "./social";
 
 export default function Footer() {
     return (
-        <div className="flex justify-center px-5 mt-40">
+        <div className="flex flex-col items-center justify-center px-5 mt-40 bg-gradient-to-b from-black to-white/5 pb-10 gap-10">
             <div className="flex flex-wrap-reverse items-end justify-between w-full max-w-screen-lg gap-y-20 gap-x-10">
                 <MyName />
                 <Contact />
             </div>
+            <hr className="w-full border border-white max-w-screen-lg" />
         </div>
     );
 }
@@ -44,6 +46,8 @@ export function Contact() {
                     <p>Powered by Next.Js /</p>
                 </CardContent>
             </Card>
+
+            <Socials className="hidden lg:flex" />
         </div>
     );
 }

@@ -10,9 +10,9 @@ import Skills from "./_components/Skills";
 
 export default function Home() {
 	return (
-		<div className="py-10 pb-0 md:p-20 md:pb-0 overflow-x-hidden">
+		<div className="overflow-x-hidden pt-32">
 			<HeroSection />
-			<Socials />
+			<Socials className="mb-20 mt-32 px-5" />
 			<CarouselSpacing />
 			<AboutMe />
 			<Skills />
@@ -20,7 +20,6 @@ export default function Home() {
 			<ProjectsSection />
 			<ArticlesSection />
 			<Footer />
-			<Socials footer />
 		</div>
 	);
 }

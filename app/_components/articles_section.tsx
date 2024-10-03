@@ -42,7 +42,7 @@ function ArticlesSection() {
     };
 
     return (
-        <div className="flex justify-center px-5 mt-40 w-full">
+        <div className="flex justify-center px-5 mt-40 w-full bg-gradient-to-b from-black via-white/5 to-black">
             <div className="w-full max-w-screen-lg space-y-10">
                 <p
                     className={cn(
@@ -105,7 +105,7 @@ function ArticlesSection() {
                             return (
                                 <Card
                                     key={article.href}
-                                    className="bg-transparent py-5 px-8 max-w-sm w-full rounded-3xl h-60 flex flex-col gap-6"
+                                    className="bg-transparent backdrop-blur-sm py-5 px-8 max-w-sm w-full rounded-3xl h-60 flex flex-col gap-6"
                                 >
                                     <h3 className="font-bold text-xl">
                                         {article.title}

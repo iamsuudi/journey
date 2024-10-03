@@ -43,13 +43,12 @@ const links = [
     // },
 ];
 
-export default function Socials({ footer }: { footer?: boolean }) {
+export default function Socials({ className }: { className?: string }) {
     return (
-        <div className="flex justify-center px-5">
+        <div className={cn("flex justify-center", className)}>
             <div
                 className={cn(
-                    "flex flex-wrap w-full max-w-screen-lg gap-3 py-10 sm:gap-5",
-                    { "md:py-20": !footer }
+                    "flex flex-wrap w-full max-w-screen-lg gap-3 sm:gap-5"
                 )}
             >
                 {links.map((link) => {
@@ -59,7 +58,7 @@ export default function Socials({ footer }: { footer?: boolean }) {
                                 variant={"outline"}
                                 className={cn(
                                     "flex gap-2 px-8 py-2 rounded-full h-fit bg-transparent backdrop-blur-lg",
-									"hover:bg-transparent hover:bg-gradient-to-b from-foreground to-foreground/80 hover:text-background"
+                                    "hover:bg-transparent hover:bg-gradient-to-b from-foreground to-foreground/80 hover:text-background"
                                 )}
                             >
                                 {link.icon}
