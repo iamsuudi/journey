@@ -27,10 +27,10 @@ export default function RootLayout({
                 )}
             >
                 <SparklesCore
-				className="w-full h-full -z-[100] absolute"
-				background="#00000000"
-				particleDensity={10}
-			 />
+                    className="w-full h-full -z-[100] absolute"
+                    background="#00000000"
+                    particleDensity={10}
+                />
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"
