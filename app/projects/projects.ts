@@ -41,8 +41,10 @@ export const projects = [
             `The file uploader project was an ambitious endeavor aimed at creating a cloud storage service similar to Google Drive.`,
             `This application allows users to upload files directly to the server while providing a seamless and user-friendly experience.`,
         ],
+        // imageDesktop:
+        //     "https://ik.imagekit.io/1xdonvuj2/project-three-desktop.png?updatedAt=1727594829409",
         imageDesktop:
-            "https://ik.imagekit.io/1xdonvuj2/project-three-desktop.png?updatedAt=1727594829409",
+            "https://ik.imagekit.io/1xdonvuj2/project-three-mobile.png?updatedAt=1727594798202",
         imageMobile:
             "https://ik.imagekit.io/1xdonvuj2/project-three-mobile.png?updatedAt=1727594798202",
         href: "/projects/file-uploader",

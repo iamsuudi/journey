@@ -15,7 +15,7 @@ export default function Skills() {
     ];
 
     return (
-        <div className="w-full max-w-screen-xl mx-auto pl-5 md:pl-0">
+        <div className="w-full max-w-screen-xl pl-5 mx-auto mt-40 md:pl-0">
             <Marquee>
                 {arr.map((Logo, index) => (
                     <div

@@ -49,12 +49,12 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
     return (
         <Card
             className={cn(
-                "w-full rounded-3xl bg-transparent backdrop-blur-sm",
+                "w-full rounded-3xl bg-white/5 shadow-[1rem, 1rem, 1rem, white] backdrop-blur-sm border-white/5",
                 { "bg-foreground/80 text-background": bgWhite }
             )}
         >
             <CardHeader>
-                <CardTitle className="opacity-60 font-normal">{name}</CardTitle>
+                <CardTitle className="font-normal opacity-60">{name}</CardTitle>
                 <CardDescription></CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2 text-sm">
@@ -74,11 +74,11 @@ function Container({ name, bgWhite }: { name: string; bgWhite?: boolean }) {
 
 export default function AboutMe() {
     return (
-        <div className="mt-32 flex justify-center px-5 bg-gradient-to-b from-black via-white/5" id="about">
-            <div className="max-w-screen-xl w-full space-y-10 md:space-y-20">
-                <div className="flex justify-between flex-wrap gap-5">
-                    <span className="text-sm font-mono">.../About me...</span>
-                    <p className="max-w-96 text-foreground/70 mx-auto mt-5">
+        <div className="flex justify-center px-5 mt-32 bg-gradient-to-b from-black via-white/5" id="about">
+            <div className="w-full max-w-screen-xl space-y-10 md:space-y-20">
+                <div className="flex flex-wrap justify-between gap-5">
+                    <span className="font-mono text-sm">.../About me...</span>
+                    <p className="mx-auto mt-5 max-w-96 text-foreground/70">
                         Hello, I am
                         <span className="text-foreground">
                             {" "}
@@ -96,19 +96,19 @@ export default function AboutMe() {
                 </div>
 
                 <div>
-                    <div className="flex flex-wrap-reverse gap-10 justify-between">
-                        <div className="flex flex-col gap-6 w-full max-w-screen-md">
+                    <div className="flex flex-wrap-reverse justify-between gap-10">
+                        <div className="flex flex-col w-full max-w-screen-md gap-6">
                             <Container name="Front-end" bgWhite />
 
                             <div className="flex">
                                 <Container name="Styling" />
-                                <button className="sm:w-full p-5 flex justify-center items-center">
+                                <button className="flex items-center justify-center p-5 sm:w-full">
                                     <Link
                                         href={"https://github.com/iamsuudi"}
                                         className="relative"
                                     >
-                                        <FaGithub className="size-10 p-1 rounded-full" />
-                                        <ArrowUpRight className="bg-foreground text-background size-8 p-1 rounded-full absolute top-1 left-2/3" />
+                                        <FaGithub className="p-1 rounded-full size-10" />
+                                        <ArrowUpRight className="absolute p-1 rounded-full bg-foreground text-background size-8 top-1 left-2/3" />
                                     </Link>
                                 </button>
                             </div>
@@ -116,7 +116,7 @@ export default function AboutMe() {
                             <Container name="Back-end" />
 
                             <div className="flex items-center gap-5">
-                                <p className="text-foreground/70 max-w-80 w-full text-sm">
+                                <p className="w-full text-sm text-foreground/70 max-w-80">
                                     Some of my{" "}
                                     <span className="text-foreground">
                                         favorite technologies, topics or tools
@@ -134,7 +134,7 @@ export default function AboutMe() {
                             width={1000}
                             height={1000}
                             alt="Abdulfetah Suudi's picture"
-                            className="max-w-96 h-fit w-full bg-foreground/50 mb-auto rounded-3xl"
+                            className="w-full mb-auto max-w-96 h-fit bg-foreground/50 rounded-3xl"
                         />
                     </div>
                 </div>

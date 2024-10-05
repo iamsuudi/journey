@@ -7,12 +7,11 @@ import Socials from "./social";
 
 export default function Footer() {
     return (
-        <div className="flex flex-col items-center justify-center px-5 mt-40 bg-gradient-to-b from-black to-white/5 pb-10 gap-10">
-            <div className="flex flex-wrap-reverse items-end justify-between w-full max-w-screen-lg gap-y-20 gap-x-10">
+        <div className="relative flex flex-col items-center justify-center gap-10 px-5 pb-10 mt-40 overflow-hidden">
+            <div className="relative flex flex-wrap-reverse items-end justify-between w-full max-w-screen-lg pb-10 overflow-hidden border-b border-white gap-y-20 gap-x-10">
                 <MyName />
                 <Contact />
             </div>
-            <hr className="w-full border border-white max-w-screen-lg" />
         </div>
     );
 }
@@ -36,7 +35,7 @@ export function Contact() {
                 </Button>
             </div>
 
-            <Card className="font-mono bg-transparent rounded-xl drop-shadow-2xl backdrop-blur-lg">
+            <Card className="font-mono bg-white/5 rounded-xl backdrop-blur-sm border-white/5">
                 <CardHeader>
                     <CardTitle>Site</CardTitle>
                 </CardHeader>

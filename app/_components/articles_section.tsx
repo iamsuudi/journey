@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, ButtonProps } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { patuaOneFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -8,7 +8,6 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 import { useState } from "react";
 import { blogs } from "../blogs/blogs";
 import DecoratedButton from "@/components/DecoratedButton";
-import { Style } from "util";
 
 const totalArticles = blogs.length;
 const articlesPerPage = 4;
@@ -42,7 +41,7 @@ function ArticlesSection() {
     };
 
     return (
-        <div className="flex justify-center px-5 mt-40 w-full bg-gradient-to-b from-black via-white/5 to-black">
+        <div className="flex justify-center w-full px-5 mt-40">
             <div className="w-full max-w-screen-lg space-y-10">
                 <p
                     className={cn(
@@ -54,10 +53,38 @@ function ArticlesSection() {
                     Articles
                 </p>
 
-                <hr />
+                <div
+                    className={cn(
+                        "relative flex flex-col-reverse items-center gap-5 overflow-hidden lg:flex-row lg:items-start",
+                        "py-10 border-t border-white/50"
+                    )}
+                >
+                    <div className="flex flex-wrap justify-start w-full gap-5">
+                        {fetchArticlesByPage(currentPage).map((article) => {
+                            return (
+                                <Card
+                                    key={article.href}
+                                    className="flex flex-col w-full max-w-sm gap-6 px-8 py-5 border-white/5 bg-white/5 backdrop-blur-sm rounded-3xl h-60"
+                                >
+                                    <h3 className="text-xl font-bold">
+                                        {article.title}
+                                    </h3>
+                                    <p className="mb-auto text-sm">
+                                        {article.description}
+                                    </p>
+                                    <div>
+                                        <DecoratedButton
+                                            href={article.href}
+                                            className="flex"
+                                            text="Read more"
+                                        />
+                                    </div>
+                                </Card>
+                            );
+                        })}
+                    </div>
 
-                <div className="flex flex-col-reverse lg:flex-row gap-5 items-center lg:items-start">
-                    <div className="flex lg:flex-col flex-row gap-3 w-fit">
+                    <div className="flex flex-row gap-3 lg:flex-col w-fit">
                         <PaginationButton
                             variant={"outline"}
                             className={cn({
@@ -100,30 +127,7 @@ function ArticlesSection() {
                         </PaginationButton>
                     </div>
 
-                    <div className="flex flex-wrap gap-5 w-full justify-center lg:justify-end">
-                        {fetchArticlesByPage(currentPage).map((article) => {
-                            return (
-                                <Card
-                                    key={article.href}
-                                    className="bg-transparent backdrop-blur-sm py-5 px-8 max-w-sm w-full rounded-3xl h-60 flex flex-col gap-6"
-                                >
-                                    <h3 className="font-bold text-xl">
-                                        {article.title}
-                                    </h3>
-                                    <p className="text-sm mb-auto">
-                                        {article.description}
-                                    </p>
-                                    <div>
-                                        <DecoratedButton
-                                            href={article.href}
-                                            className="flex"
-                                            text="Read more"
-                                        />
-                                    </div>
-                                </Card>
-                            );
-                        })}
-                    </div>
+                    <div className="w-[70%] h-[60%] bg-[#ffffff13] rounded-[100%] absolute -z-10 sm:top-[10%]  blur-3xl"></div>
                 </div>
             </div>
         </div>

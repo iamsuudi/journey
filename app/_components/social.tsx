@@ -45,7 +45,7 @@ const links = [
 
 export default function Socials({ className }: { className?: string }) {
     return (
-        <div className={cn("flex justify-center", className)}>
+        <div className={cn("flex justify-center z-20", className)}>
             <div
                 className={cn(
                     "flex flex-wrap w-full max-w-screen-lg gap-3 sm:gap-5"
@@ -57,8 +57,8 @@ export default function Socials({ className }: { className?: string }) {
                             <Button
                                 variant={"outline"}
                                 className={cn(
-                                    "flex gap-2 px-8 py-2 rounded-full h-fit bg-transparent backdrop-blur-lg",
-                                    "hover:bg-transparent hover:bg-gradient-to-b from-foreground to-foreground/80 hover:text-background"
+                                    "flex gap-2 px-8 py-2 rounded-full h-fit bg-white/5 backdrop-blur-sm border-white/5",
+                                    "hover:bg-transparent hover:bg-gradient-to-b from-foreground to-foreground/80 hover:text-background hover:border-none"
                                 )}
                             >
                                 {link.icon}

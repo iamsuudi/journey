@@ -13,9 +13,7 @@ export default function ProjectsSection() {
             <div className="w-full max-w-screen-lg space-y-10">
                 <p className="text-sm font-mono mx-5">.../Projects...</p>
 
-                <hr />
-
-                <div className="space-y-40">
+                <div className="space-y-40 py-10 border-t border-white/50">
                     {projects.map((project, index) => {
                         return (
                             <div
