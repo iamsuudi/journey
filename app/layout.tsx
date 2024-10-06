@@ -22,14 +22,15 @@ export default function RootLayout({
         <html lang="en">
             <body
                 className={cn(
-                    "font-sans antialiased bg-black relative",
+                    "font-sans antialiased bg-black",
                     inter.variable
                 )}
             >
                 <SparklesCore
-                    className="w-full h-full -z-[100] absolute"
+                    className="w-screen h-screen -z-[100] fixed"
                     background="#00000000"
-                    particleDensity={10}
+                    particleDensity={5}
+                    speed={1}
                 />
                 <ThemeProvider
                     attribute="class"
