@@ -55,11 +55,11 @@ function ArticlesSection() {
 
                 <div
                     className={cn(
-                        "relative flex flex-col-reverse items-center gap-5 overflow-hidden lg:flex-row lg:items-start",
+                        "relative flex flex-col items-center gap-5 justify-center overflow-hidden lg:flex-row lg:items-start",
                         "py-10 border-t border-white/50"
                     )}
                 >
-                    <div className="flex flex-wrap justify-start w-full gap-5">
+                    <div className="flex flex-wrap md:justify-start justify-center w-full gap-5 max-w-[800px]">
                         {fetchArticlesByPage(currentPage).map((article) => {
                             return (
                                 <Card
