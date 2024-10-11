@@ -29,6 +29,7 @@ export default function RootLayout({
                 <SparklesCore
                     className="w-screen h-screen -z-[100] fixed"
                     background="#00000000"
+                    particleColor="#555"
                     particleDensity={5}
                     speed={1}
                 />
