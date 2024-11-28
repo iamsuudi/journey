@@ -29,7 +29,7 @@ const works = [
     },
     {
         time: "2024 Sep - Present",
-        duration: formatDistanceToNowStrict(new Date(2024, 8)),
+        duration: formatDistanceStrict(new Date(2024, 8), new Date()),
         company: "HulmiTech",
         technologies: [],
         role: "Fullstack developer (Hybrid)",
